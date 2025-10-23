@@ -80,4 +80,68 @@ vendor/bin/phpunit
 These ensure:
 - Payment is processed only for confirmed orders  
 - Payment amount matches order total  
-- Users cannot pay for others’ orders  
+- Users cannot pay for others’ orders 
+
+The system is designed to easily integrate multiple payment gateways without modifying core business logic, following SOLID principles, especially the Open/Closed Principle.
+
+1. Architecture Overview
+
+PaymentProcessor: Handles payment processing for orders. It delegates the actual payment execution to a gateway.
+
+PaymentGatewayManager: Responsible for selecting the correct gateway based on the payment method.
+
+PaymentGatewayInterface: Defines the contract for any payment gateway. Each gateway class implements this interface.
+
+interface PaymentGatewayInterface {
+    public function process(Order $order, array $data): array;
+}
+## Payment Gateway Extensibility
+
+Gateway Implementations: Each payment provider (e.g., Cash, Credit Card, Stripe) has its own class implementing PaymentGatewayInterface.
+
+2. Adding a New Gateway
+
+Create a new class implementing PaymentGatewayInterface.
+Example:
+
+class StripeGateway implements PaymentGatewayInterface {
+    public function process(Order $order, array $data): array {
+        // Stripe API logic
+        return [
+            'payment_id' => $stripePaymentId,
+            'status' => 'successful',
+        ];
+    }
+}
+
+
+Register the new gateway in PaymentGatewayManager.
+
+$this->gateways['stripe'] = new StripeGateway();
+
+
+No changes are required in PaymentProcessor or the controller.
+
+3. Benefits
+
+Open/Closed Principle: Add new gateways without modifying existing code.
+
+Testability: Each gateway can be tested independently using mocks.
+
+Consistency: PaymentProcessor and services remain agnostic to specific gateway implementations.
+
+Scalability: Easy to support multiple payment methods for different regions or providers.
+
+4. Flow Example
+
+User initiates a payment.
+
+PaymentProcessor receives the order and payment data.
+
+The processor asks PaymentGatewayManager to return the correct gateway for the chosen method.
+
+Gateway executes the payment and returns the result.
+
+Processor saves the transaction via the repository.
+
+This structure ensures that extending the payment system is fast, safe, and requires minimal changes.

@@ -1,0 +1,1308 @@
+{
+	"info": {
+		"_postman_id": "a4206f70-2c0c-45ce-87ff-49804bb9e2a2",
+		"name": "crosswork Task",
+		"description": "Postman collection for Laravel-based Orders & Payments API with JWT authentication.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3775210",
+		"_collection_link": "https://cloudy-escape-204270.postman.co/workspace/My-Workspace~f371ec07-3314-48e4-8196-f6c38e2d98dd/collection/3775210-a4206f70-2c0c-45ce-87ff-49804bb9e2a2?action=share&source=collection_link&creator=3775210"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"user5@example.com\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "invalid Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"user@example.com\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 20:53:47 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Validation errors\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ],\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"user1@example.com\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 20:54:17 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"name\": \"Test User\",\n        \"email\": \"user1@example.com\",\n        \"updated_at\": \"2025-10-21T20:54:17.000000Z\",\n        \"created_at\": \"2025-10-21T20:54:17.000000Z\",\n        \"id\": 2\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzYxMDgwMDU3LCJleHAiOjE3NjEwODM2NTcsIm5iZiI6MTc2MTA4MDA1NywianRpIjoiTExkYnlqY09wRnlWYUUwVSIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.BjJ9CZXDeIzKyDKWADAB5LSsndKkO7iNtAZvp9y-Fbg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"user2@example.com\",\n  \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 20:56:23 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiaWF0IjoxNzYxMDgwMTgzLCJleHAiOjE3NjEwODM3ODMsIm5iZiI6MTc2MTA4MDE4MywianRpIjoibG1qeWkyRlQ2SUZuMTJNZyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.DFQIT2YH_JOHqFNQya0ltLjmZ8WRLynw6oqwodsfrgI\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Test User\",\n        \"email\": \"user@example.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-10-21T20:51:34.000000Z\",\n        \"updated_at\": \"2025-10-21T20:51:34.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "invalid Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"user333@example.com\",\n  \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 20:56:37 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "List Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiaWF0IjoxNzYxMTY4ODE2LCJleHAiOjE3NjExNzI0MTYsIm5iZiI6MTc2MTE2ODgxNiwianRpIjoiRjZ0dGZ6UWt4MXBtN21jVyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.QJF1V8-utLKbli9nBTn74_d1IfECb-NVt6RN2zPLQ8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 21:47:01 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 3,\n            \"total\": 0,\n            \"status\": \"confirmed\",\n            \"created_at\": \"2025-10-21T21:45:08.000000Z\",\n            \"updated_at\": \"2025-10-21T21:45:08.000000Z\",\n            \"order_items\": [],\n            \"payment_transaction\": []\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 3,\n            \"total\": 0,\n            \"status\": \"confirmed\",\n            \"created_at\": \"2025-10-21T21:45:20.000000Z\",\n            \"updated_at\": \"2025-10-21T21:45:20.000000Z\",\n            \"order_items\": [],\n            \"payment_transaction\": []\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 3,\n            \"total\": 110,\n            \"status\": \"confirmed\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"order_items\": [\n                {\n                    \"id\": 1,\n                    \"order_id\": 3,\n                    \"product_name\": \"Book\",\n                    \"quantity\": 2,\n                    \"unit_price\": \"50.00\",\n                    \"line_total\": \"100.00\",\n                    \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n                    \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n                },\n                {\n                    \"id\": 2,\n                    \"order_id\": 3,\n                    \"product_name\": \"Pen\",\n                    \"quantity\": 1,\n                    \"unit_price\": \"10.00\",\n                    \"line_total\": \"10.00\",\n                    \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n                    \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n                }\n            ],\n            \"payment_transaction\": []\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8081/api/orders?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8081/api/orders?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"page\": null,\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost:8081/api/orders?page=1\",\n            \"label\": \"1\",\n            \"page\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"page\": null,\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8081/api/orders\",\n    \"per_page\": 15,\n    \"prev_page_url\": null,\n    \"to\": 3,\n    \"total\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiaWF0IjoxNzYxMTY4ODE2LCJleHAiOjE3NjExNzI0MTYsIm5iZiI6MTc2MTE2ODgxNiwianRpIjoiRjZ0dGZ6UWt4MXBtN21jVyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.QJF1V8-utLKbli9nBTn74_d1IfECb-NVt6RN2zPLQ8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 1,\n  \"items\": [\n    {\"product_name\": \"Book\", \"quantity\": 2, \"unit_price\": 50},\n    {\"product_name\": \"Pen\", \"quantity\": 1, \"unit_price\": 10}\n  ],\n  \"status\": \"confirmed\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user_id\": 1,\n  \"items\": [\n    {\"product_name\": \"Book\", \"quantity\": 2, \"unit_price\": 50},\n    {\"product_name\": \"Pen\", \"quantity\": 1, \"unit_price\": 10}\n  ],\n  \"status\": \"confirmed\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 21:46:04 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user_id\": 3,\n    \"total\": 110,\n    \"status\": \"confirmed\",\n    \"updated_at\": \"2025-10-21T21:46:04.000000Z\",\n    \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n    \"id\": 3,\n    \"order_items\": [\n        {\n            \"id\": 1,\n            \"order_id\": 3,\n            \"product_name\": \"Book\",\n            \"quantity\": 2,\n            \"unit_price\": \"50.00\",\n            \"line_total\": \"100.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"order_id\": 3,\n            \"product_name\": \"Pen\",\n            \"quantity\": 1,\n            \"unit_price\": \"10.00\",\n            \"line_total\": \"10.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        }\n    ],\n    \"payment_transaction\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "View Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiaWF0IjoxNzYxMDgyNTMxLCJleHAiOjE3NjEwODYxMzEsIm5iZiI6MTc2MTA4MjUzMSwianRpIjoiUHk4aUJ2VWNDeWxwbkxwRyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Z1Csg9DpaFGFfTE72logp62DDwbAeJwXz0o1qE2ZsZE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "View Order",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/orders/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 21:48:21 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"user_id\": 3,\n    \"total\": 110,\n    \"status\": \"confirmed\",\n    \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n    \"updated_at\": \"2025-10-21T21:46:04.000000Z\",\n    \"order_items\": [\n        {\n            \"id\": 1,\n            \"order_id\": 3,\n            \"product_name\": \"Book\",\n            \"quantity\": 2,\n            \"unit_price\": \"50.00\",\n            \"line_total\": \"100.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"order_id\": 3,\n            \"product_name\": \"Pen\",\n            \"quantity\": 1,\n            \"unit_price\": \"10.00\",\n            \"line_total\": \"10.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        }\n    ],\n    \"payment_transaction\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiaWF0IjoxNzYxMTYyOTk4LCJleHAiOjE3NjExNjY1OTgsIm5iZiI6MTc2MTE2Mjk5OCwianRpIjoiZjZvVXpNejJvUjJha0lmcCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Gvd5_hJiEwOrCzKyc-2vdl-pFaX_6pUqCqcN2yHIa4I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"confirmed\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"pending\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/orders/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 21:49:23 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"user_id\": 3,\n    \"total\": 110,\n    \"status\": \"pending\",\n    \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n    \"updated_at\": \"2025-10-21T21:49:23.000000Z\",\n    \"order_items\": [\n        {\n            \"id\": 1,\n            \"order_id\": 3,\n            \"product_name\": \"Book\",\n            \"quantity\": 2,\n            \"unit_price\": \"50.00\",\n            \"line_total\": \"100.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"order_id\": 3,\n            \"product_name\": \"Pen\",\n            \"quantity\": 1,\n            \"unit_price\": \"10.00\",\n            \"line_total\": \"10.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        }\n    ],\n    \"payment_transaction\": []\n}"
+						},
+						{
+							"name": "Update Order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"confirmed\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/orders/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Oct 2025 20:55:55 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"user_id\": 3,\n    \"total\": 110,\n    \"status\": \"confirmed\",\n    \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n    \"updated_at\": \"2025-10-22T20:55:55.000000Z\",\n    \"order_items\": [\n        {\n            \"id\": 1,\n            \"order_id\": 3,\n            \"product_name\": \"Book\",\n            \"quantity\": 2,\n            \"unit_price\": \"50.00\",\n            \"line_total\": \"100.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"order_id\": 3,\n            \"product_name\": \"Pen\",\n            \"quantity\": 1,\n            \"unit_price\": \"10.00\",\n            \"line_total\": \"10.00\",\n            \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n            \"updated_at\": \"2025-10-21T21:46:04.000000Z\"\n        }\n    ],\n    \"payment_transaction\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiaWF0IjoxNzYxMTY4ODE2LCJleHAiOjE3NjExNzI0MTYsIm5iZiI6MTc2MTE2ODgxNiwianRpIjoiRjZ0dGZ6UWt4MXBtN21jVyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.QJF1V8-utLKbli9nBTn74_d1IfECb-NVt6RN2zPLQ8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders/8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/orders/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Oct 2025 21:49:45 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "List Payments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Process Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order_id\": 1,\n  \"method\": \"credit_card\",\n  \"amount\": 110\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/payments/process",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								"process"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Process Payment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"order_id\": 2,\n    \"method\": 1,\n    \"amount\": 110,\n    \"status\": \"successful\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/payments/process",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"payments",
+										"process"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Oct 2025 20:31:27 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"payment_method_id\": 1,\n    \"order_id\": 2,\n    \"status\": \"successful\",\n    \"created_at\": \"2025-10-22T20:31:27.000000Z\",\n    \"updated_at\": \"2025-10-22T20:31:27.000000Z\"\n}"
+						},
+						{
+							"name": "Process Payment not equal to order total",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"order_id\": 4,\n    \"method\": 1,\n    \"amount\": 400,\n    \"status\": \"successful\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/payments/process",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"payments",
+										"process"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Oct 2025 20:53:21 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Payment amount (400) does not match order total (110).\"\n}"
+						}
+					]
+				},
+				{
+					"name": "View Payment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/payments/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "View Payment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/payments/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"payments",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.29.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Oct 2025 20:56:20 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"payment_method_id\": 1,\n    \"order_id\": 3,\n    \"status\": \"successful\",\n    \"created_at\": \"2025-10-22T20:56:15.000000Z\",\n    \"updated_at\": \"2025-10-22T20:56:15.000000Z\",\n    \"order\": {\n        \"id\": 3,\n        \"user_id\": 3,\n        \"total\": 110,\n        \"status\": \"confirmed\",\n        \"created_at\": \"2025-10-21T21:46:04.000000Z\",\n        \"updated_at\": \"2025-10-22T20:55:55.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/api"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
